@@ -1,0 +1,34 @@
+# IRC server
+server: "irc.example.com"
+port: 6697
+
+# Server password (optional)
+password: ""
+
+# Bot nickname
+nick: "notesbot"
+# Username
+user: "notesbot"
+# Real name
+realname: "IRC Notes Bot"
+
+# TLS settings
+tls: true
+# Path to CA certificate (if empty — system trust store is used)
+tls_ca: ""
+# Skip certificate verification (not recommended for production)
+tls_skip_verify: false
+
+# Channels the bot will join
+channels:
+  - "#general"
+  - "#dev"
+
+# Path to SQLite database
+db_path: "notes.db"
+
+# Maximum number of notes per channel (ring buffer)
+max_notes: 15
+
+# Maximum size of a single note in bytes
+max_note_size: 4096
