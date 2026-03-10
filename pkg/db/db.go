@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	_ "github.com/mattn/go-sqlite3"
+	_ "modernc.org/sqlite"
 )
 
 // Note represents a single notification.
@@ -25,7 +25,7 @@ type NoteStore struct {
 
 // NewNoteStore creates a new notes store.
 func NewNoteStore(dbPath string, maxNotes int) (*NoteStore, error) {
-	db, err := sql.Open("sqlite3", dbPath+"?_journal_mode=WAL")
+	db, err := sql.Open("sqlite", dbPath+"?_pragma=journal_mode(WAL)")
 	if err != nil {
 		return nil, fmt.Errorf("failed to open database: %w", err)
 	}

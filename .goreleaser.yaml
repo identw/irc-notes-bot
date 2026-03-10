@@ -11,7 +11,7 @@ builds:
     main: ./cmd/irc-notes-bot
     binary: irc-notes-bot
     env:
-      - CGO_ENABLED=1
+      - CGO_ENABLED=0
     goos:
       - linux
     goarch:
@@ -21,24 +21,7 @@ builds:
     goarm:
       - "7"
     ldflags:
-      - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
-    overrides:
-      - goos: linux
-        goarch: amd64
-        env:
-          - CGO_ENABLED=1
-          - CC=x86_64-linux-gnu-gcc
-      - goos: linux
-        goarch: arm64
-        env:
-          - CGO_ENABLED=1
-          - CC=aarch64-linux-gnu-gcc
-      - goos: linux
-        goarch: arm
-        goarm: "7"
-        env:
-          - CGO_ENABLED=1
-          - CC=arm-linux-gnueabihf-gcc
+      - -s -w -extldflags '-static' -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
 
 archives:
   - id: default
