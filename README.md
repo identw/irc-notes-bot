@@ -4,9 +4,6 @@ IRC bot that stores per-channel notes in a SQLite database and sends them to use
 
 ## Features
 
-- Connects to IRC with or without TLS
-- TLS supports both system trust store and a custom CA certificate
-- Optional server password authentication
 - Per-channel notes stored in SQLite (ring buffer — oldest notes are automatically removed when the limit is reached)
 - Sends all channel notes to a user via PM on channel join
 - Configurable limits for note count and note size
